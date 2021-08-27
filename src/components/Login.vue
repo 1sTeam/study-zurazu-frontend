@@ -42,6 +42,7 @@
 <script>
 export default{
 
+name : 'login',
 data () {
     return {
         title : "ZURAZU"
@@ -51,7 +52,8 @@ data () {
 }
 </script>
 
-<style>
+
+<style scoped>
 body{
     background: #E5E5E5;
 }
@@ -97,7 +99,6 @@ body{
     width: 85%;
     padding-top: 1.5rem;
     padding-bottom: 0.5rem;
-    background-color: #e2e2e2;
     font-size: 14px;
 
 }
