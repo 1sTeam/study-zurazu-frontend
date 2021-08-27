@@ -1,7 +1,6 @@
 <template>
     <div class="Login">
-    
-        <div class="wrapper">
+
             <div class="LoginTemplate">
                 
             <form class="title">
@@ -31,11 +30,7 @@
                     <div class="line">|</div>
                     <div class="Join">회원가입</div>
                 </div >
-
-
             </div>
-        </div>
-
 </div>
 </template>
 
@@ -54,20 +49,12 @@ data () {
 
 
 <style scoped>
-body{
-    background: #E5E5E5;
-}
-.wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5rem;
-}
+
 .title{
     font-size: 30px;
     color: #214AD9;
     font-weight : bolder;
-    margin-top: 1.5rem;
+
     margin-bottom: 1.5em;
 
 }
@@ -76,10 +63,10 @@ body{
     width : 27rem;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5em;
+    margin-top: 10em;
     flex-direction: column;
     align-items: center;
-    height: 1vh;
+    height: 100vh;
 }
 .EmailInsert,.PwInsert {
 
