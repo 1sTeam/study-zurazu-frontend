@@ -1,6 +1,6 @@
 <template>
     <div class="Login">
-
+        <form @submit.prevent="submitLogin"> 
             <div class="LoginTemplate">
                 
             <form class="title">
@@ -8,11 +8,11 @@
             </form>
 
                 <form class="EmailInsert">
-                    <input placeholder="이메일" />
+                    <input placeholder="이메일" id="email" v-model="email" />
                 </form>
 
                 <form class="PwInsert">
-                    <input placeholder="비밀번호" />
+                    <input type = "password" placeholder="비밀번호"  id="password" v-model="password" />
                 </form>
 
 
@@ -31,19 +31,41 @@
                     <div class="Join">회원가입</div>
                 </div >
             </div>
+        </form>
 </div>
 </template>
 
 <script>
+
+import Axios from 'axios';
+
 export default{
 
-name : 'login',
-data () {
-    return {
-        title : "ZURAZU"
-    }
-}
+    name : 'login',
+    data () {
+        return {
+            title : "ZURAZU",
+            email : '',
+            password : ''
+        }
+    },
+    methods : {
+        submitLogin(){
 
+			console.log('test');
+            Axios.post('http://api.zurazu.com/member/login', {
+            email: this.email,
+            password: this.password,
+
+        })
+        .then(res => console.log(res))
+        .catch(error => console.log(error))
+
+
+        }
+
+
+    }
 }
 </script>
 

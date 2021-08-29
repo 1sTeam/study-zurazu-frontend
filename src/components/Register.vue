@@ -36,17 +36,17 @@
                 </div>
 
                 <div>
-                    <label for="sex">성별</label>
-                    <select name="sex">
+                    <label for="gender">성별</label>
+                    <select name="gender"  v-model="gender">
                         <option value="">성별 선택</option>
-                        <option value="남">남</option>
-                        <option value="여">여</option>
+                        <option value="MALE">남</option>
+                        <option value="FEMALE">여</option>
                     </select>
                 </div>
 
-                <form name="해당 폼의 이름" action="값을 보낼 주소" method="post">
+                <form name="해당 폼의 이름" action="값을 보낼 주소" method="post" >
                     <label for="date">생년월일</label>
-                    <input type='date' name='userBirthday' value='1999-03-30'/>
+                    <input v-model="birth" type='date' name='userBirthday' value='1999-03-30'/>
                 </form>
 
                 <div class="checkbox_group">
@@ -78,6 +78,8 @@
     </div>
 </template>
 <script>
+import Axios from 'axios';
+
 export default {
     data() {
         return {
@@ -85,13 +87,33 @@ export default {
 			name: '',
 			password: '',
 			passwordConfirm: '',
+            gender : '',
+            birth : ''
         }
     },
 
     methods: {
+        
 		submitForm() {
 			console.log('test');
+            Axios.post('http://api.zurazu.com/member/register', {
+            email: this.email,
+            password: this.password,
+            realName : this.name,
+            gender : this.gender ,
+            agreeTermsOfService : true,
+            agreeCollectionPersonalInfo : true,
+            agreePushNotification : true,
+            agreeReceiveEmail : true,
+            agreeReceiveSMS : true,
+            agreeReceiveKAKAO : true,
+            agreeUpperFourteen : true
+
+        })
+        .then(res => console.log(res))
+        .catch(error => console.log(error))
 		},
+
     },
 }
 </script>
