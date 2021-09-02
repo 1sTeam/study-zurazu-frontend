@@ -5,6 +5,7 @@ import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
 import Main from '../components/Main.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -40,5 +41,7 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+
 
 export default router

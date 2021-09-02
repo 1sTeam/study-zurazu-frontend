@@ -163,10 +163,7 @@ html, body {
 
 }
 
-.registerTemplate>div{
 
-
-}
 
 button {
     cursor: pointer;

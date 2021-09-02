@@ -17,7 +17,7 @@ import axios from 'axios';
 
 
 //refresh 갱신 기능이 있는 axios 인스턴스
-export const axiosApiInstance = axios.create({
+const axiosApiInstance = axios.create({
   baseURL:"http://api.zurazu.com",
 });
 
@@ -64,11 +64,11 @@ axiosApiInstance.interceptors.response.use((response) => {
 
 const refreshAccessToken = (refreshToken) => {
   //토큰 갱신해서 accessToken 반환
-  return new Promise((succ, fail) => {
+  return new Promise((succ) => {
     axios.post('http://api.zurazu.com/member/refreshToken',{refreshToken: refreshToken}).then((response) => {
       succ(response.data.list.accessToken[0]);
-    }).catch((error) => {
-      fail(null);
     });
   });
 }
+
+export { axiosApiInstance };

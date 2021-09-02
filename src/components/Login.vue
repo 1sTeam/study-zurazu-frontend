@@ -8,11 +8,11 @@
             </form>
 
                 <form class="EmailInsert">
-                    <input placeholder="이메일" id="email" v-model="email" />
+                    <input placeholder="이메일" id="emailInput" v-model="emailInput" />
                 </form>
 
                 <form class="PwInsert">
-                    <input type = "password" placeholder="비밀번호"  id="password" v-model="password" />
+                    <input type = "password" placeholder="비밀번호"  id="passwordInput" v-model="passwordInput" />
                 </form>
 
 
@@ -36,37 +36,50 @@
 </template>
 
 <script>
-
 import Axios from 'axios';
 
 export default{
-
     name : 'login',
     data () {
         return {
             title : "ZURAZU",
-            email : '',
-            password : ''
+            emailInput : '',
+            passwordInput : '',
         }
     },
     methods : {
         submitLogin(){
-
 			console.log('test');
             Axios.post('http://api.zurazu.com/member/login', {
-            email: this.email,
-            password: this.password,
-
+            email: this.emailInput,
+            password: this.passwordInput,
         })
-        .then(res => console.log(res))
+        .then(res => {
+        console.log(res)
+        if (res.status === 200) {
+            alert('로그인 성공');
+            const accessToken = res.data.list.accessToken;
+            const refreshToken = res.data.list.refreshToken;
+            const userInfo = {
+                accessToken: accessToken,
+                refreshToken: refreshToken,
+            };
+            window.sessionStorage.setItem("userInfo",JSON.stringify(userInfo));
+            console.log(sessionStorage.getItem('userInfo'))
+        }}
+        )
         .catch(error => console.log(error))
 
 
-        }
+        },
+
+        
+}
 
 
     }
-}
+    
+
 </script>
 
 
