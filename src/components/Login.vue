@@ -66,6 +66,8 @@ export default{
             };
             window.sessionStorage.setItem("userInfo",JSON.stringify(userInfo));
             console.log(sessionStorage.getItem('userInfo'))
+            this.$router.push({name: 'Main'})
+            
         }}
         )
         .catch(error => console.log(error))

@@ -1,17 +1,18 @@
 import axios from 'axios';
+
 /*
 로그인은 일반 axios 객체를 이용해 해야하고
 로그인 결과 엑세스 토큰과 리프레시 토큰을 세션스토리지에 userInfo객체 안에 담아야 한다.
 그 이후로는 axiosApiInstance를 이용해 다른 api를 호출하면 알아서 액세스 토큰을 넣어 api를 호출하고 리프래시토큰을 갱신해줌
 
 세션 스토리지에 담는 예제
-            const accessToken = response.data.list.accessToken;
-            const refreshToken = response.data.list.refreshToken;
-            const userInfo = {
-                accessToken: accessToken,
-                refreshToken: refreshToken,
-            };
-            window.sessionStorage.setItem("userInfo",JSON.stringify(userInfo));
+  const accessToken = response.data.list.accessToken;
+  const refreshToken = response.data.list.refreshToken;
+  const userInfo = {
+    accessToken: accessToken,
+    refreshToken: refreshToken,
+  };
+  window.sessionStorage.setItem("userInfo",JSON.stringify(userInfo));
 
 */
 
